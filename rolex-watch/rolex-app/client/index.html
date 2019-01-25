@@ -1,0 +1,112 @@
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hyperledger rolex-watch Application</title>
+    <link rel="icon" href="rolex.jpg" type="image/gif">
+
+    <!-- require jquery and bootstrap scripts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    
+    <!-- adding style here -->
+    <style type="text/css">
+      header{
+        background-color: lightgray;
+        font-size:20px;
+        padding:15px;
+      }
+      header, .form-group{
+        margin-bottom: 3%;
+      }
+      .form-group{
+        width:50%;
+      }
+      #body{
+        margin-left:3%;
+        margin-right:3%;
+      }
+      .form-control{
+        margin: 8px;
+      }
+      #right_header{
+        width:20%;
+        font-size:15px;
+        margin-right:0px;
+      }
+      #left_header{
+        margin-left:0;
+        width:40%;
+        display:inline-block;
+      } 
+      #id {
+        width:49%;
+        display: inline-block;
+      }
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body ng-app="application" ng-controller="appController">
+    <header>
+      <div id="Centre_header">Hyperledger Application</div>
+    </header>
+
+    <div id="body">
+   
+   <div class="form-group">
+        <label>Query Purchase Order</label><br>
+        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Id</h5>
+        
+		<input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="watch_id">
+        <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="querywatch()">
+      </div>
+
+      <table id="query_watch" class="table" align="center">
+
+        <tr>
+          <th>Watch Name</th>
+          <th>Quantity</th>
+          <th>Outlet Details</th>
+          <th>Timestamp</th>
+        </tr>
+
+        <tr>
+          <td>{{query_watch.watch}}</td>
+          <td>{{query_watch.qty}}</td>
+          <td>{{query_watch.outlet}}</td>
+          <td>{{query_watch.timestamp}}</td>
+        </tr>
+      </table>
+
+       <div class="form-group">
+        <label>Create Purchase Order</label>
+        <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_watch}}</h5>
+        <br>
+        Enter id: <input class="form-control" type="text" placeholder="Ex: 1" ng-model="watch.id">
+        Enter watch name: <input class="form-control" type="text" placeholder="Ex: Rolex" ng-model="watch.name">
+        Enter quantity: <input id="createName" class="form-control" type="text" placeholder="Ex: 2" ng-model="watch.qty"> 
+        Enter outlet details: <input id="createName" class="form-control" type="text" placeholder="Camp, Pune" ng-model="watch.outlet">
+        Enter timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="watch.timestamp">
+        <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordwatch()"> 
+      </div>
+
+    </div>
+  </body>
+    <!-- requiring the angular page -->
+    <script type="text/javascript" src="app.js"> </script>
+</html>
